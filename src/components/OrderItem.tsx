@@ -1,3 +1,4 @@
+import { formatCurrency } from "../helpers/formatCurrency"
 import type { OrderItemT } from "../types"
 
 type ItemInOrderT = {
@@ -10,9 +11,9 @@ export const OrderItem = ({ item, removeItem }: ItemInOrderT) => {
             <div className="flex justify-between items-center border-b-1 w-full border-gray-400 hover:bg-emerald-300 p-2 mt-1 shadow shadow-l shadow-gray-400">
                 <div className="flex flex-col items-start">
                     <div className="font-light">
-                        <p className="capitalize text-lg">{item.name} - <span className="font-normal">${item.price} -</span></p>
+                        <p className="capitalize text-lg">{item.name} - <span className="font-normal">{formatCurrency(item.price)} -</span></p>
                     </div>
-                    <p className="font-semibold text-xl">cant:<span className=" text-cyan-800 font-bold"> {item.quantity}</span> : <span className="text-cyan-800 font-bold " >$ {item.price * item.quantity} -</span>
+                    <p className="font-semibold text-xl">cant:<span className=" text-cyan-800 font-bold"> {item.quantity}</span> : <span className="text-cyan-800 font-bold " > {formatCurrency(item.price * item.quantity)} -</span>
                     </p>
                 </div>
                 <button
